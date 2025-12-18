@@ -44,7 +44,12 @@ And with the Observable Framework, you can use the [Observable Plot library](htt
 
 There are kind of ways to capture data for the reports. That is described in the following link:   
 https://observablehq.com/framework/data-loaders    
-Normally that is done during the build phase of the Observable Framework, but in case of an incident, it should be done once, otherwise the data gets overwritten and then you loose the old data.
+
+<div class="caution" label="Capture once"> 
+
+Data capturing is normally done again during the build phase of the Observable Framework, but in case of an incident, it should be done **once**, otherwise the data gets overwritten and then you loose the old data.
+
+</div>
 
 ## Example with ING
 
