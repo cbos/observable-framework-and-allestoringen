@@ -25,7 +25,7 @@ There are more ways to do that.
 
 The engineers of Observable Framework created a framework to create reports and provided an example of that as well:
 <div class="card">
-    <h1>Example report created as example</h1>
+    <h1>Example report created</h1>
     <p>
         <a href="https://observablehq.observablehq.cloud/framework-example-api/" target="_blank">
             <picture>
@@ -42,6 +42,9 @@ And with the Observable Framework, you can use the [Observable Plot library](htt
 
 ## Capture data from DownDetector / Allestoringen 
 
+When an incident occurs, customers report problems pretty quickly. [DownDetector](https://downdetector.com) and [Allestoringen (Dutch version reporting Dutch companies)](https://allestoringen.nl) provide a nice overview of the problems.   
+That data can be a starting point for your own incident report to indicate the customer impact.   
+
 There are kind of ways to capture data for the reports. That is described in the following link:   
 https://observablehq.com/framework/data-loaders    
 
@@ -53,14 +56,15 @@ Data capturing is normally done again during the build phase of the Observable F
 
 ## Example with ING
 
-In this case I assume you just downloaded the raw HTML file from for example `https://allestoringen.nl/storing/ing/` and store that as `./data/ing.html`.
+In this case I assume you just downloaded the raw HTML file from for example **`https://allestoringen.nl/storing/ing/`** and store that as **`src/data/ing.html`**.
 Once you have to that you can make the next steps, as described below.
 
 ```js echo
 const ing = FileAttachment("./data/ing.html").text();
 ```
 
-Import the functions from the downdetector.js file to convert the HTML to JSON and plot the data:
+Import the functions from the downdetector.js file to convert the HTML to JSON and plot the data.    
+Source is available at https://github.com/cbos/observable-framework-and-allestoringen/blob/main/src/components/downdetector.js    
 
 ```js echo
 import {convertHtmlToJson, plotOutage} from "./components/downdetector.js";
@@ -88,51 +92,37 @@ Or you can render it as a card:
 
 # Reports for major banks in the Netherlands
 
-With the steps above you can create reports for major banks in the Netherlands. This can be the starting point for your own report.   
-The graph from DownDetector only indicates the number of customers who complained about the problems.    
+With the steps above you can create reports for major banks in the Netherlands. This can be the **starting point for your own report**.   
+The graph from DownDetector only indicates the number of customers who complained about the problems. 
 The actual number of customers affected is not visible.    
-But this can be a start of an incident report based on actual numbers.
 
-## ING
-
-<div class="grid grid-cols-1">
-  <div class="card">
-    <h2>Reports for ING</h2>
-    ${plotOutage(convertHtmlToJson(ing))}
-  </div>
-</div>
-
-## Rabobank
+Having this as a starting point you can add more actual numbers to the report to indicate what happened.
 
 ```js
 const rabobank = FileAttachment("./data/rabobank.html").text();
-```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${plotOutage(convertHtmlToJson(rabobank))}
-  </div>
-</div>
-
-## ABN AMRO Bank
-
-```js
 const abnamro = FileAttachment("./data/abnamro.html").text();
-```
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${plotOutage(convertHtmlToJson(abnamro))}
-  </div>
-</div>
-
-## ASN Bank
-
-```js
 const asn = FileAttachment("./data/asn.html").text();
 ```
-<div class="grid grid-cols-1">
+
+<div class="grid grid-cols-2">
+    <div class="card">
+    <h2>Reports for ING on 18-12-2025</h2>
+    ${plotOutage(convertHtmlToJson(ing))}
+  </div>
   <div class="card">
+    <h2>Reports for Rabobank on 18-12-2025</h2>
+    ${plotOutage(convertHtmlToJson(rabobank))}
+  </div>
+  <div class="card">
+    <h2>Reports for ABN AMRO on 18-12-2025</h2>
+    ${plotOutage(convertHtmlToJson(abnamro))}
+  </div>
+<div class="card">
+    <h2>Reports for ASN on 18-12-2025</h2>
     ${plotOutage(convertHtmlToJson(asn))}
   </div>
 </div>
 
+--- 
 
+This interactive report is related to this blog post [Observable Framework ❤️ DownDetector](https://ceesbos.nl/posts/observable-framework-loves-downdetector/).

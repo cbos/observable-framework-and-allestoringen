@@ -1,4 +1,15 @@
-# Observable Framework And Allestoringen2
+# Observable Framework And Downdetector / Allestoringen
+
+## Background
+
+This repository is a showcase of the [Observable Framework](https://observablehq.com/framework/) and the [Downdetector](https://downdetector.com/) or [Allestoringen](https://allestoringen.nl).
+By combining these you can have a good start of an interactive incident report.
+
+![](images/downdector_and_observable.svg)
+
+More about the background can be found in the blog post [Observable Framework ❤️ DownDetector](https://ceesbos.nl/posts/observable-framework-loves-downdetector/).
+
+## Local development with Observable Framework
 
 This is an [Observable Framework](https://observablehq.com/framework/) app. To install the required dependencies, run:
 
@@ -18,18 +29,18 @@ For more, see <https://observablehq.com/framework/getting-started>.
 
 ## Project structure
 
-A typical Framework project looks like this:
+This Framework project looks like this:
 
 ```ini
 .
 ├─ src
 │  ├─ components
-│  │  └─ timeline.js           # an importable module
+│  │  └─ downdetector.js       # an importable module
 │  ├─ data
-│  │  ├─ launches.csv.js       # a data loader
-│  │  └─ events.json           # a static data file
-│  ├─ example-dashboard.md     # a page
-│  ├─ example-report.md        # another page
+│  │  ├─ abnamro.html          # a static data file
+│  │  ├─ asn.html              # a static data file
+│  │  ├─ ing.html              # a static data file
+│  │  └─ rabobank.html         # a static data file
 │  └─ index.md                 # the home page
 ├─ .gitignore
 ├─ observablehq.config.js      # the app config file
